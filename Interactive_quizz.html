@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>كورس اللغة التفاعلي</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
+      direction: rtl;
+    }
+
+    .header-gradient {
+      background: linear-gradient(135deg, #4F46E5, #7C3AED);
+      height: 6px;
+    }
+
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .navbar-brand {
+      color: #4F46E5 !important;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-switch {
+      border: 2px solid #4F46E5;
+      background: #fff;
+      color: #4F46E5;
+      border-radius: 30px;
+      padding: 5px 15px;
+      cursor: pointer;
+    }
+
+    .lang-switch:hover {
+      background: #4F46E5;
+      color: #fff;
+    }
+
+    .course-hero {
+      background: linear-gradient(rgba(79,70,229,0.9), rgba(124,58,237,0.8));
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .section-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+
+    .vocab-card {
+      background: #f1f5f9;
+      border-left: 4px solid #10B981;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .footer {
+      background: #1f2937;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    .en-text { display: none; }
+
+    /* Quiz feedback styles */
+    .correct-answer {
+      color: #10B981;
+      font-weight: bold;
+    }
+
+    .incorrect-answer {
+      color: #EF4444;
+      font-weight: bold;
+    }
+
+    .result-card {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      border: 1px solid #e2e8f0;
+    }
+
+    .result-item {
+      padding: 10px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .score-display {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .answer-icon {
+      margin-left: 5px;
+      font-size: 1.2rem;
+    }
+
+    .alert-danger {
+      background-color: #fef2f2;
+      color: #b91c1c;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #fecaca;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header-gradient"></div>
+
+<nav class="navbar navbar-light sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#"><i class="bi bi-mortarboard"></i> <span class="ar-text">منصة المبتعث الذكي</span><span class="en-text">Smart Scholar</span></a>
+    <!-- <button class="lang-switch" onclick="toggleLanguage()"><i class="bi bi-translate"></i> <span class="ar-text">English</span><span class="en-text">العربية</span></button> -->
+  </div>
+</nav>
+
+<div class="course-hero">
+  <h1 class="ar-text">كورس اللغة التفاعلي</h1>
+  <h1 class="en-text">Interactive Language Course</h1>
+  <p class="ar-text">تعلم المفردات والاختبارات التفاعلية</p>
+  <p class="en-text">Learn with vocabulary and interactive quizzes</p>
+</div>
+
+<div class="container mt-4">
+  <div class="section-card">
+    <h4 class="ar-text"><i class="bi bi-book"></i> مفردات أساسية</h4>
+    <h4 class="en-text"><i class="bi bi-book"></i> Basic Vocabulary</h4>
+
+    <div class="vocab-card">
+      <p class="ar-text"><strong>التسجيل:</strong> عملية تسجيل المقررات</p>
+      <p class="en-text"><strong>Registration:</strong> Registering for courses</p>
+    </div>
+
+    <div class="vocab-question mt-3">
+      <p class="ar-text"><strong>ما معنى كلمة "Lecture"؟</strong></p>
+      <p class="en-text"><strong>What does "Lecture" mean?</strong></p>
+      <form>
+        <div><label><input type="radio" name="q1" value="correct"> <span class="ar-text">محاضرة</span> <span class="en-text">Lecture</span></label></div>
+        <div><label><input type="radio" name="q1" value="wrong"> <span class="ar-text">امتحان</span> <span class="en-text">Exam</span></label></div>
+        <div><label><input type="radio" name="q1" value="wrong"> <span class="ar-text">وظيفة</span> <span class="en-text">Job</span></label></div>
+        <div><label><input type="radio" name="q1" value="wrong"> <span class="ar-text">مكتبة</span> <span class="en-text">Library</span></label></div>
+      </form>
+    </div>
+
+    <div class="vocab-question mt-3">
+      <p class="ar-text"><strong>ما معنى كلمة "Assignment"؟</strong></p>
+      <p class="en-text"><strong>What does "Assignment" mean?</strong></p>
+      <form>
+        <div><label><input type="radio" name="q2" value="correct"> <span class="ar-text">واجب</span> <span class="en-text">Homework</span></label></div>
+        <div><label><input type="radio" name="q2" value="wrong"> <span class="ar-text">مكتبة</span> <span class="en-text">Library</span></label></div>
+        <div><label><input type="radio" name="q2" value="wrong"> <span class="ar-text">معمل</span> <span class="en-text">Lab</span></label></div>
+        <div><label><input type="radio" name="q2" value="wrong"> <span class="ar-text">قاعة</span> <span class="en-text">Hall</span></label></div>
+      </form>
+    </div>
+
+    <div class="vocab-question mt-3">
+      <p class="ar-text"><strong>ما معنى كلمة "Semester"؟</strong></p>
+      <p class="en-text"><strong>What does "Semester" mean?</strong></p>
+      <form>
+        <div><label><input type="radio" name="q3" value="correct"> <span class="ar-text">فصل دراسي</span> <span class="en-text">Academic term</span></label></div>
+        <div><label><input type="radio" name="q3" value="wrong"> <span class="ar-text">شهادة</span> <span class="en-text">Certificate</span></label></div>
+        <div><label><input type="radio" name="q3" value="wrong"> <span class="ar-text">إدارة</span> <span class="en-text">Administration</span></label></div>
+        <div><label><input type="radio" name="q3" value="wrong"> <span class="ar-text">درجة</span> <span class="en-text">Grade</span></label></div>
+      </form>
+    </div>
+
+    <div class="mt-4">
+      <button onclick="checkAnswers()" class="btn btn-primary"><span class="ar-text">تحقق</span>  <span class="en-text">Check</span></button>
+      <button onclick="resetQuiz()" class="btn btn-secondary ms-2"><span class="ar-text">إعادة تعيين</span>   <span class="en-text">Reset</span></button>
+      <div id="result" style="margin-top: 15px;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p class="ar-text">© جميع الحقوق محفوظة</p>
+  <p class="en-text">© All rights reserved</p>
+</div>
+
+<script>
+  function toggleLanguage() {
+    document.querySelectorAll('.ar-text, .en-text').forEach(el => {
+      if (el.style.display === 'none') {
+        el.style.display = 'inline';
+      } else {
+        el.style.display = 'none';
+      }
+    });
+
+    document.documentElement.lang = document.documentElement.lang === 'ar' ? 'en' : 'ar';
+    document.body.dir = document.body.dir === 'rtl' ? 'ltr' : 'rtl';
+  }
+
+  function checkAnswers() {
+    const questions = ['q1', 'q2', 'q3'];
+    const resultDiv = document.getElementById('result');
+    const currentLang = document.documentElement.lang;
+
+    // Clear previous results
+    resultDiv.innerHTML = '';
+
+    // Check if all questions are answered
+    let allAnswered = true;
+    questions.forEach(q => {
+      if (!document.querySelector(`input[name="${q}"]:checked`)) {
+        allAnswered = false;
+      }
+    });
+
+    if (!allAnswered) {
+      if (currentLang === 'ar') {
+        resultDiv.innerHTML = '<div class="alert-danger"><i class="bi bi-exclamation-circle"></i> الرجاء الإجابة على جميع الأسئلة</div>';
+      } else {
+        resultDiv.innerHTML = '<div class="alert-danger"><i class="bi bi-exclamation-circle"></i> Please answer all questions</div>';
+      }
+      return;
+    }
+
+    // Calculate results
+    let score = 0;
+    const results = [];
+
+    questions.forEach(q => {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      const correct = document.querySelector(`input[name="${q}"][value="correct"]`);
+      const isCorrect = selected === correct;
+
+      if (isCorrect) score++;
+
+      // Get answer text
+      const selectedText = selected.nextElementSibling.textContent;
+      const correctText = correct.nextElementSibling.textContent;
+
+      results.push({
+        question: q,
+        selectedText,
+        correctText,
+        isCorrect
+      });
+    });
+
+    // Display results
+    let resultHTML = '';
+
+    if (currentLang === 'ar') {
+      resultHTML += `<div class="score-display">نتيجتك: ${score}/${questions.length}</div>`;
+      resultHTML += '<div class="result-card">';
+      resultHTML += '<h5 class="mb-3"><i class="bi bi-list-check"></i> تفاصيل الإجابات:</h5>';
+
+      results.forEach((res, index) => {
+        resultHTML += `<div class="result-item">`;
+        resultHTML += `<p><strong>السؤال ${index + 1}:</strong></p>`;
+        resultHTML += `<p>إجابتك: <span class="${res.isCorrect ? 'correct-answer' : 'incorrect-answer'}">${res.selectedText}</span>`;
+        resultHTML += res.isCorrect
+          ? ' <i class="bi bi-check-circle-fill correct-answer answer-icon"></i></p>'
+          : ' <i class="bi bi-x-circle-fill incorrect-answer answer-icon"></i></p>';
+
+        if (!res.isCorrect) {
+          resultHTML += `<p>الإجابة الصحيحة: <span class="correct-answer">${res.correctText}</span></p>`;
+        }
+        resultHTML += `</div>`;
+      });
+
+      resultHTML += '</div>';
+    } else {
+      resultHTML += `<div class="score-display">Your Score: ${score}/${questions.length}</div>`;
+      resultHTML += '<div class="result-card">';
+      resultHTML += '<h5 class="mb-3"><i class="bi bi-list-check"></i> Answer Details:</h5>';
+
+      results.forEach((res, index) => {
+        resultHTML += `<div class="result-item">`;
+        resultHTML += `<p><strong>Question ${index + 1}:</strong></p>`;
+        resultHTML += `<p>Your answer: <span class="${res.isCorrect ? 'correct-answer' : 'incorrect-answer'}">${res.selectedText}</span>`;
+        resultHTML += res.isCorrect
+          ? ' <i class="bi bi-check-circle-fill correct-answer answer-icon"></i></p>'
+          : ' <i class="bi bi-x-circle-fill incorrect-answer answer-icon"></i></p>';
+
+        if (!res.isCorrect) {
+          resultHTML += `<p>Correct answer: <span class="correct-answer">${res.correctText}</span></p>`;
+        }
+        resultHTML += `</div>`;
+      });
+
+      resultHTML += '</div>';
+    }
+
+    resultDiv.innerHTML = resultHTML;
+  }
+
+  function resetQuiz() {
+    const questions = ['q1', 'q2', 'q3'];
+
+    // Uncheck all radio buttons
+    questions.forEach(q => {
+      document.querySelectorAll(`input[name="${q}"]`).forEach(radio => {
+        radio.checked = false;
+      });
+    });
+
+    // Clear results
+    document.getElementById('result').innerHTML = '';
+  }
+</script>
+
+</body>
+</html>
