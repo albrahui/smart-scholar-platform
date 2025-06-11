@@ -9,11 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4F46E5; /* Vibrant indigo */
-            --secondary-color: #10B981; /* Soft green */
-            --accent-color: #F59E0B; /* Warm amber */
-            --background-light: #F9FAFB; /* Very light gray */
-            --text-dark: #1F2937; /* Dark gray */
+            --primary-color: #4F46E5;
+            --secondary-color: #10B981;
+            --accent-color: #F59E0B;
+            --background-light: #F9FAFB;
+            --text-dark: #1F2937;
             --card-bg: #FFFFFF;
             --header-gradient: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
             --card-gradient: linear-gradient(135deg, #F0F9FF 0%, #FDF2F8 100%);
@@ -155,8 +155,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-fill-color: transparent;
-        }
+         }
 
         .section-card h3 {
             font-size: 1.4rem;
@@ -303,6 +302,7 @@
             </div>
 
             <div class="col-md-6 col-lg-4">
+                                <a href="accommodation.html" style="text-decoration: none;">
                 <div class="section-card card-2">
                     <div class="icon"><i class="bi bi-house-door"></i></div>
                     <h3 class="ar-text">السكن والمعيشة</h3>
@@ -310,16 +310,19 @@
                     <p class="ar-text mt-2">دليل السكن، تكاليف المعيشة، والمواصلات</p>
                     <p class="en-text mt-2" style="display: none;">Housing guide, living costs, and transportation</p>
                 </div>
+                      </a>
             </div>
 
             <div class="col-md-6 col-lg-4">
-                <div class="section-card card-3">
-                    <div class="icon"><i class="bi bi-journal-bookmark"></i></div>
-                    <h3 class="ar-text">الحياة الأكاديمية</h3>
-                    <p class="en-text" style="display: none;">Academic Life</p>
-                    <p class="ar-text mt-2">نظام الدراسة، المكتبات، والموارد الأكاديمية</p>
-                    <p class="en-text mt-2" style="display: none;">Study system, libraries, and academic resources</p>
-                </div>
+                <a href="academic_life.html" style="text-decoration: none;">
+                    <div class="section-card card-3">
+                        <div class="icon"><i class="bi bi-journal-bookmark"></i></div>
+                        <h3 class="ar-text">الحياة الأكاديمية</h3>
+                        <p class="en-text" style="display: none;">Academic Life</p>
+                        <p class="ar-text mt-2">نظام الدراسة، المكتبات، والموارد الأكاديمية</p>
+                        <p class="en-text mt-2" style="display: none;">Study system, libraries, and academic resources</p>
+                    </div>
+                </a>
             </div>
 
             <div class="col-md-6 col-lg-4">
@@ -389,33 +392,85 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+
+function applyLanguage(lang) {
+    const htmlTag = document.querySelector('html');
+    const arElements = document.querySelectorAll('.ar-text');
+    const enElements = document.querySelectorAll('.en-text');
+    const langSwitchButton = document.querySelector('.lang-switch');
+
+    if (lang === 'en') {
+        htmlTag.setAttribute('lang', 'en');
+        htmlTag.setAttribute('dir', 'ltr');
+        arElements.forEach(el => el.style.display = 'none');
+        enElements.forEach(el => {
+
+            if (['P', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'UL', 'OL', 'LI'].includes(el.tagName)) {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'inline';
+            }
+        });
+        if (langSwitchButton) {
+            langSwitchButton.querySelector('.ar-text').style.display = 'none';
+            langSwitchButton.querySelector('.en-text').style.display = 'inline';
+        }
+    } else {
+        htmlTag.setAttribute('lang', 'ar');
+        htmlTag.setAttribute('dir', 'rtl');
+        arElements.forEach(el => {
+            if (['P', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'UL', 'OL', 'LI'].includes(el.tagName)) {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'inline';
+            }
+        });
+        enElements.forEach(el => el.style.display = 'none');
+        if (langSwitchButton) {
+            langSwitchButton.querySelector('.ar-text').style.display = 'inline';
+            langSwitchButton.querySelector('.en-text').style.display = 'none';
+        }
+    }
+
+    document.body.style.fontFamily = htmlTag.getAttribute('lang') === 'ar' ?
+        "'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" :
+        "'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+}
+
+function toggleLanguage() {
+    const htmlTag = document.querySelector('html');
+    let currentLang = htmlTag.getAttribute('lang');
+    let newLang = (currentLang === 'ar') ? 'en' : 'ar';
+
+    localStorage.setItem('preferredLang', newLang);
+    applyLanguage(newLang);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('preferredLang');
+    if (savedLang) {
+        applyLanguage(savedLang);
+    } else {
+        applyLanguage('ar');
+    }
+});
         function toggleLanguage() {
             const htmlTag = document.querySelector('html');
-            const arElements = document.querySelectorAll('.ar-text');
-            const enElements = document.querySelectorAll('.en-text');
-            const langSwitchButton = document.querySelector('.lang-switch');
+            let currentLang = htmlTag.getAttribute('lang');
+            let newLang = (currentLang === 'ar') ? 'en' : 'ar';
 
-            if (htmlTag.getAttribute('lang') === 'ar') {
-                htmlTag.setAttribute('lang', 'en');
-                htmlTag.setAttribute('dir', 'ltr');
-                arElements.forEach(el => el.style.display = 'none');
-                enElements.forEach(el => el.style.display = 'block' || 'inline');
-                langSwitchButton.querySelector('.ar-text').style.display = 'none';
-                langSwitchButton.querySelector('.en-text').style.display = 'inline';
-            } else {
-                htmlTag.setAttribute('lang', 'ar');
-                htmlTag.setAttribute('dir', 'rtl');
-                arElements.forEach(el => el.style.display = 'block' || 'inline');
-                enElements.forEach(el => el.style.display = 'none');
-                langSwitchButton.querySelector('.ar-text').style.display = 'inline';
-                langSwitchButton.querySelector('.en-text').style.display = 'none';
-            }
-
-            // Update font family based on language
-            document.body.style.fontFamily = htmlTag.getAttribute('lang') === 'ar' ?
-                "'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" :
-                "'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+            localStorage.setItem('preferredLang', newLang);
+            applyLanguage(newLang);
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang) {
+                applyLanguage(savedLang);
+            } else {
+                applyLanguage('ar');
+            }
+        });
     </script>
 </body>
 </html>

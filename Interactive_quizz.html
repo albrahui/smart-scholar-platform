@@ -140,7 +140,6 @@
 <nav class="navbar navbar-light sticky-top">
   <div class="container">
     <a class="navbar-brand" href="#"><i class="bi bi-mortarboard"></i> <span class="ar-text">منصة المبتعث الذكي</span><span class="en-text">Smart Scholar</span></a>
-    <!-- <button class="lang-switch" onclick="toggleLanguage()"><i class="bi bi-translate"></i> <span class="ar-text">English</span><span class="en-text">العربية</span></button> -->
   </div>
 </nav>
 
@@ -226,10 +225,8 @@
     const resultDiv = document.getElementById('result');
     const currentLang = document.documentElement.lang;
 
-    // Clear previous results
     resultDiv.innerHTML = '';
 
-    // Check if all questions are answered
     let allAnswered = true;
     questions.forEach(q => {
       if (!document.querySelector(`input[name="${q}"]:checked`)) {
@@ -246,7 +243,6 @@
       return;
     }
 
-    // Calculate results
     let score = 0;
     const results = [];
 
@@ -257,7 +253,6 @@
 
       if (isCorrect) score++;
 
-      // Get answer text
       const selectedText = selected.nextElementSibling.textContent;
       const correctText = correct.nextElementSibling.textContent;
 
@@ -269,7 +264,6 @@
       });
     });
 
-    // Display results
     let resultHTML = '';
 
     if (currentLang === 'ar') {
@@ -320,14 +314,12 @@
   function resetQuiz() {
     const questions = ['q1', 'q2', 'q3'];
 
-    // Uncheck all radio buttons
     questions.forEach(q => {
       document.querySelectorAll(`input[name="${q}"]`).forEach(radio => {
         radio.checked = false;
       });
     });
 
-    // Clear results
     document.getElementById('result').innerHTML = '';
   }
 </script>

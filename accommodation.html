@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السكن والمعيشة | منصة المبتعث الذكي</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+    :root {
+        --primary: #4F46E5;
+        --secondary: #10B981;
+        --accent: #F59E0B;
+        --bg-light: #F9FAFB;
+        --text-dark: #1F2937;
+    }
+
+    body {
+        font-family: 'Tajawal', sans-serif;
+        background: var(--bg-light);
+        color: var(--text-dark);
+        direction: rtl;
+    }
+
+    [lang="en"] body {
+        direction: ltr;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .navbar {
+        background: white;
+        padding: 0.75rem 0;
+        z-index: 1000;
+        position: sticky;
+        top: 0;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    }
+
+    .navbar-brand {
+        color: var(--primary) !important;
+        font-weight: 700;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .brand-icon {
+        background: linear-gradient(135deg, var(--primary), #7C3AED);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+
+    .back-button {
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+        text-decoration: none;
+    }
+
+    .back-button:hover {
+        transform: scale(1.1);
+        background: #4338ca;
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+    }
+
+    .back-button:active {
+        transform: scale(0.95);
+    }
+
+    .welcome-section {
+        text-align: center;
+        margin: 2rem 0;
+        padding: 2rem;
+        background: linear-gradient(135deg, rgba(79, 70, 229, 0.05), rgba(16, 185, 129, 0.05));
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .welcome-section h1 {
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 1rem;
+        position: relative;
+    }
+
+    .welcome-section h1:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 2px;
+    }
+
+    .topic-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        border-left: 4px solid var(--primary);
+        height: auto;
+    }
+
+    [lang="en"] .topic-card {
+        border-left: none;
+        border-right: 4px solid var(--primary);
+    }
+
+    .topic-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .topic-card h4, .topic-card h5 {
+        font-weight: 700;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 0.5rem;
+    }
+
+    .topic-icon {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        flex-shrink: 0;
+    }
+
+    .content-section {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        margin-top: 2rem;
+    }
+
+    .list-group-item {
+        border-color: #f0f0f0;
+    }
+
+    .footer {
+        background: var(--text-dark);
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+        margin-top: 3rem;
+        font-size: 0.9rem;
+    }
+
+    .footer a {
+        color: var(--accent);
+        text-decoration: none;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
+
+    .en-text { display: none; }
+    [lang="en"] .ar-text { display: none; }
+    [lang="en"] .en-text { display: block; }
+
+    @media (max-width: 768px) {
+        .navbar .container {
+            padding: 0 1rem;
+        }
+
+        .back-button {
+            width: 40px;
+            height: 40px;
+            font-size: 1.1rem;
+        }
+
+        .welcome-section {
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .topic-card {
+            padding: 1rem;
+            height: auto;
+        }
+
+        .content-section {
+            padding: 1.5rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.2rem;
+        }
+
+        .brand-icon {
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+</style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="#" class="back-button" onclick="goBack()" title="العودة للخلف / Go Back">
+                <i class="bi bi-arrow-right" id="backIcon"></i>
+            </a>
+
+            <a class="navbar-brand" href="#">
+                <div class="brand-icon">
+                    <i class="bi bi-mortarboard"></i>
+                </div>
+                <span class="ar-text">منصة المبتعث الذكي</span>
+                <span class="en-text">Smart Scholar Platform</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="welcome-section">
+            <h1 class="ar-text">🏠 السكن والمعيشة</h1>
+            <h1 class="en-text">🏠 Accommodation & Living</h1>
+            <p class="lead ar-text">دليلك الشامل لخيارات السكن، تكاليف المعيشة، وكيفية التأقلم في وجهتك الجديدة.</p>
+            <p class="lead en-text">Your comprehensive guide to accommodation options, living costs, and how to settle into your new destination.</p>
+        </div>
+
+        <div class="content-section mb-5">
+            <h2 class="ar-text mb-4 text-center">نظرة عامة على محتوى السكن والمعيشة</h2>
+            <h2 class="en-text mb-4 text-center">Overview of Accommodation & Living Content</h2>
+
+            <div class="row justify-content-center g-4">
+                <div class="col-md-6 col-lg-4">
+                    <a href="#types-of-accommodation" class="text-decoration-none">
+                        <div class="topic-card text-center h-100">
+                            <h4>
+                                <div class="topic-icon">1</div>
+                                <span class="ar-text">أنواع السكن</span>
+                                <span class="en-text">Types of Accommodation</span>
+                            </h4>
+                            <p class="ar-text mt-2">استكشف خيارات السكن المتاحة لك ومميزات كل نوع.</p>
+                            <p class="en-text mt-2">Explore the available accommodation options and their features.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <a href="#booking-links" class="text-decoration-none">
+                        <div class="topic-card text-center h-100">
+                            <h4>
+                                <div class="topic-icon">2</div>
+                                <span class="ar-text">روابط الحجز المعروفة</span>
+                                <span class="en-text">Known Booking Links</span>
+                            </h4>
+                            <p class="ar-text mt-2">أفضل المواقع والمنصات للعثور على سكن مناسب.</p>
+                            <p class="en-text mt-2">Top websites and platforms to find suitable accommodation.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <a href="#essential-services" class="text-decoration-none">
+                        <div class="topic-card text-center h-100">
+                            <h4>
+                                <div class="topic-icon">3</div>
+                                <span class="ar-text">دليل الخدمات الأساسية</span>
+                                <span class="en-text">Essential Services Guide</span>
+                            </h4>
+                            <p class="ar-text mt-2">إجراءات فتح حساب بنكي، شريحة هاتف، والمواصلات.</p>
+                            <p class="en-text mt-2">Procedures for opening a bank account, phone SIM, and transportation.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="types-of-accommodation" class="content-section my-5">
+            <h2 class="ar-text mb-4">أنواع السكن المتاحة</h2>
+            <h2 class="en-text mb-4">Available Types of Accommodation</h2>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="topic-card">
+                        <h5 class="ar-text"><i class="bi bi-person-workspace me-2"></i> سكن الطلاب الجامعي</h5>
+                        <h5 class="en-text"><i class="bi bi-person-workspace me-2"></i> University Student Housing</h5>
+                        <p class="ar-text">غالباً ما يكون الخيار الأول للطلاب الجدد. يتميز بقربه من الحرم الجامعي، توفير بيئة اجتماعية، وشمول الإيجار للفواتير. قد يكون أقل خصوصية ولكنه مثالي للتأقلم.</p>
+                        <p class="en-text">Often the first choice for new students. Characterized by proximity to campus, a social environment, and inclusive utility bills. May offer less privacy but is ideal for settling in.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="topic-card">
+                        <h5 class="ar-text"><i class="bi bi-building me-2"></i> السكن الخاص (شقق وغرف)</h5>
+                        <h5 class="en-text"><i class="bi bi-building me-2"></i> Private Accommodation (Apartments & Rooms)</h5>
+                        <p class="ar-text">يوفر هذا الخيار مرونة وخصوصية أكبر. يمكنك استئجار شقة كاملة، أو غرفة في شقة مشتركة. يتطلب منك إدارة الفواتير والبحث عن سكن بعناية.</p>
+                        <p class="en-text">This option offers more flexibility and privacy. You can rent a full apartment or a room in a shared apartment. Requires careful management of bills and housing search.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mx-auto">
+                    <div class="topic-card">
+                        <h5 class="ar-text"><i class="bi bi-people-fill me-2"></i> العيش مع عائلة مضيفة (Homestay)</h5>
+                        <h5 class="en-text"><i class="bi bi-people-fill me-2"></i> Living with a Host Family (Homestay)</h5>
+                        <p class="ar-text">تجربة ثقافية فريدة تساعدك على ممارسة اللغة والتأقلم مع الحياة المحلية. توفر العائلات عادةً غرفاً مفروشة ووجبات طعام.</p>
+                        <p class="en-text">A unique cultural experience that helps you practice the language and adapt to local life. Host families typically provide furnished rooms and meals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="booking-links" class="content-section my-5">
+            <h2 class="ar-text mb-4">أهم روابط ومواقع حجز السكن</h2>
+            <h2 class="en-text mb-4">Key Accommodation Booking Links & Websites</h2>
+
+            <p class="ar-text">للبحث عن السكن المناسب، يمكنك الاستعانة بالمواقع التالية:</p>
+            <p class="en-text">To find suitable accommodation, you can use the following websites:</p>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex align-items-center ar-text">
+                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
+                    <a href="https://www.unilodgers.com/" target="_blank" class="text-decoration-none fw-bold text-dark">Unilodgers</a>
+                    <span class="ms-auto text-muted">(لسكن الطلاب حول العالم)</span>
+                </li>
+                <li class="list-group-item d-flex align-items-center en-text">
+                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
+                    <a href="https://www.unilodgers.com/" target="_blank" class="text-decoration-none fw-bold text-dark">Unilodgers</a>
+                    <span class="ms-auto text-muted">(For student accommodation worldwide)</span>
+                </li>
+
+                <li class="list-group-item d-flex align-items-center ar-text">
+                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
+                    <a href="https://www.booking.com/" target="_blank" class="text-decoration-none fw-bold text-dark">Booking.com</a>
+                    <span class="ms-auto text-muted">(خيارات متنوعة للفنادق والشقق)</span>
+                </li>
+                <li class="list-group-item d-flex align-items-center en-text">
+                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
+                    <a href="https://www.booking.com/" target="_blank" class="text-decoration-none fw-bold text-dark">Booking.com</a>
+                    <span class="ms-auto text-muted">(Various options for hotels & apartments)</span>
+                </li>
+
+                <li class="list-group-item d-flex align-items-center ar-text">
+                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
+                    <a href="https://www.airbnb.com/" target="_blank" class="text-decoration-none fw-bold text-dark">Airbnb</a>
+                    <span class="ms-auto text-muted">(للإقامات قصيرة وطويلة الأمد مع عائلات أو أفراد)</span>
+                </li>
+                <li class="list-group-item d-flex align-items-center en-text">
+                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
+                    <a href="https://www.airbnb.com/" target="_blank" class="text-decoration-none fw-bold text-dark">Airbnb</a>
+                    <span class="ms-auto text-muted">(For short and long-term stays with families or individuals)</span>
+                </li>
+
+                <li class="list-group-item d-flex align-items-center ar-text">
+                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
+                    <a href="https://www.spareroom.co.uk/" target="_blank" class="text-decoration-none fw-bold text-dark">SpareRoom</a>
+                    <span class="ms-auto text-muted">(للبحث عن غرف في سكن مشترك، خاصة في المملكة المتحدة)</span>
+                </li>
+                <li class="list-group-item d-flex align-items-center en-text">
+                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
+                    <a href="https://www.spareroom.co.uk/" target="_blank" class="text-decoration-none fw-bold text-dark">SpareRoom</a>
+                    <span class="ms-auto text-muted">(For finding shared rooms, especially in the UK)</span>
+                </li>
+
+                <li class="list-group-item d-flex align-items-center ar-text">
+                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
+                    <a href="https://www.housinganywhere.com/" target="_blank" class="text-decoration-none fw-bold text-dark">HousingAnywhere</a>
+                    <span class="ms-auto text-muted">(لتبادل السكن للطلاب الدوليين)</span>
+                </li>
+                <li class="list-group-item d-flex align-items-center en-text">
+                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
+                    <a href="https://www.housinganywhere.com/" target="_blank" class="text-decoration-none fw-bold text-dark">HousingAnywhere</a>
+                    <span class="ms-auto text-muted">(For international student housing exchange)</span>
+                </li>
+            </ul>
+        </div>
+
+        <div id="essential-services" class="content-section my-5">
+            <h2 class="ar-text mb-4">دليل الخدمات الأساسية عند الوصول</h2>
+            <h2 class="en-text mb-4">Essential Services Guide Upon Arrival</h2>
+
+            <p class="ar-text">للتأقلم بشكل أسرع في بلدك الجديد، إليك بعض الإرشادات حول الخدمات الأساسية:</p>
+            <p class="en-text">To adapt faster in your new country, here are some guidelines for essential services:</p>
+
+            <div class="row g-4">
+                <div class="col-md-12">
+                    <div class="topic-card">
+                        <h5 class="ar-text"><i class="bi bi-bank me-2 text-secondary"></i> فتح حساب بنكي</h5>
+                        <h5 class="en-text"><i class="bi bi-bank me-2 text-secondary"></i> Opening a Bank Account</h5>
+                        <p class="ar-text">يعد فتح حساب بنكي أمراً ضرورياً لإدارة نفقاتك. ستحتاج عادةً إلى جواز سفر، إثبات تسجيل جامعي، وإثبات عنوان. ابحث عن البنوك التي تقدم خدمات للطلاب الدوليين.</p>
+                        <p class="en-text">Opening a bank account is essential for managing your expenses. You'll typically need your passport, proof of university enrollment, and proof of address. Look for banks that offer services for international students.</p>
+                        <p class="ar-text small text-muted mt-2"><strong>نصيحة:</strong> بعض الجامعات لديها شراكات مع بنوك محلية لتسهيل العملية على الطلاب.</p>
+                        <p class="en-text small text-muted mt-2"><strong>Tip:</strong> Some universities have partnerships with local banks to simplify the process for students.</p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="topic-card">
+                        <h5 class="ar-text"><i class="bi bi-phone me-2 text-secondary"></i> شراء شريحة هاتف</h5>
+                        <h5 class="en-text"><i class="bi bi-phone me-2 text-secondary"></i> Buying a Phone SIM Card</h5>
+                        <p class="ar-text">للبقاء على اتصال، شراء شريحة هاتف محلية أمر حيوي. قارن بين خطط شركات الاتصالات المختلفة واختر ما يناسب احتياجاتك من بيانات ومكالمات.</p>
+                        <p class="en-text">To stay connected, buying a local SIM card is vital. Compare plans from different mobile providers and choose what suits your data and call needs.</p>
+                        <p class="ar-text small text-muted mt-2"><strong>نصيحة:</strong> يمكن شراء شرائح مسبقة الدفع من المتاجر الكبرى أو المتاجر الرسمية لشركات الاتصالات.</p>
+                        <p class="en-text small text-muted mt-2"><strong>Tip:</strong> Prepaid SIM cards can be purchased from major stores or official telecom provider shops.</p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="topic-card">
+                        <h5 class="ar-text"><i class="bi bi-bus-front me-2 text-secondary"></i> النقل والمواصلات</h5>
+                        <h5 class="en-text"><i class="bi bi-bus-front me-2 text-secondary"></i> Transportation</h5>
+                        <p class="ar-text">تعرف على شبكة المواصلات العامة في مدينتك (حافلات، قطارات، مترو). غالباً ما توفر الجامعات تخفيضات على بطاقات المواصلات للطلاب. فكر في شراء دراجة هوائية إذا كانت المدينة مناسبة.</p>
+                        <p class="en-text">Familiarize yourself with your city's public transportation network (buses, trains, metro). Universities often offer discounts on transportation passes for students. Consider buying a bicycle if the city is suitable.</p>
+                        <p class="ar-text small text-muted mt-2"><strong>نصيحة:</strong> استخدم تطبيقات الخرائط والمواصلات المحلية لتخطيط رحلاتك.</p>
+                        <p class="en-text small text-muted mt-2"><strong>Tip:</strong> Use local map and transit apps to plan your journeys.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="ar-text">© 2025 منصة المبتعث الذكي. جميع الحقوق محفوظة.</p>
+            <p class="en-text">© 2025 Smart Scholar Platform. All rights reserved.</p>
+            <p class="mt-2">
+                <a href="#" class="ar-text">الشروط والأحكام</a> |
+                <a href="#" class="ar-text">سياسة الخصوصية</a> |
+                <a href="#" class="ar-text">اتصل بنا</a>
+            </p>
+            <p class="mt-2 en-text">
+                <a href="#">Terms & Conditions</a> |
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Contact Us</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentLang = localStorage.getItem('preferredLang') || 'ar';
+        function applyLanguage(lang) {
+            const html = document.documentElement;
+            const backIcon = document.getElementById('backIcon');
+            const arElements = document.querySelectorAll('.ar-text');
+            const enElements = document.querySelectorAll('.en-text');
+
+            html.setAttribute('lang', lang);
+            html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+            if (lang === 'ar') {
+                backIcon.className = 'bi bi-arrow-right'; // Arrow right for RTL
+                document.title = 'السكن والمعيشة | منصة المبتعث الذكي';
+                arElements.forEach(el => {
+
+                    if (['P', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'UL', 'OL', 'LI'].includes(el.tagName)) {
+                        el.style.display = 'block';
+                    } else {
+                        el.style.display = 'inline';
+                    }
+                });
+                enElements.forEach(el => el.style.display = 'none');
+            } else {
+                backIcon.className = 'bi bi-arrow-left';
+                document.title = 'Accommodation & Living | Smart Scholar Platform';
+                arElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => {
+                    if (['P', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'UL', 'OL', 'LI'].includes(el.tagName)) {
+                        el.style.display = 'block';
+                    } else {
+                        el.style.display = 'inline';
+                    }
+                });
+            }
+
+            currentLang = lang;
+            localStorage.setItem('preferredLang', lang);
+        }
+        function toggleLanguage() {
+            applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+        }
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = '/';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(currentLang);
+        });
+
+        window.addEventListener('popstate', () => {
+            applyLanguage(localStorage.getItem('preferredLang') || 'ar');
+        });
+    </script>
+</body>
+</html>
