@@ -6,45 +6,73 @@
   <title>كورس اللغة التفاعلي</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    /* Root variables for consistent theming */
+    :root {
+        --primary: #4F46E5;
+        --secondary: #10B981;
+        --accent: #F59E0B;
+        --bg-light: #F9FAFB;
+        --text-dark: #1F2937;
+    }
+
     body {
       font-family: 'Tajawal', sans-serif;
-      background: #f9fafb;
-      color: #1f2937;
-      direction: rtl;
+      background: var(--bg-light); /* Using variable */
+      color: var(--text-dark); /* Using variable */
+      direction: rtl; /* Set default direction */
+    }
+
+    /* Language specific body styles */
+    [lang="en"] body {
+      direction: ltr;
+      font-family: 'Poppins', sans-serif;
     }
 
     .header-gradient {
-      background: linear-gradient(135deg, #4F46E5, #7C3AED);
+      background: linear-gradient(135deg, var(--primary), #7C3AED); /* Using variable */
       height: 6px;
     }
 
     .navbar {
       background: #fff;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 0.75rem 1rem; /* Adjust padding for better spacing */
     }
 
     .navbar-brand {
-      color: #4F46E5 !important;
+      color: var(--primary) !important; /* Using variable */
       font-weight: bold;
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .lang-switch {
-      border: 2px solid #4F46E5;
-      background: #fff;
-      color: #4F46E5;
-      border-radius: 30px;
-      padding: 5px 15px;
-      cursor: pointer;
+    /* Back Button Styling - EXACTLY matching the other page */
+    .back-button {
+      background: var(--primary); /* Using variable */
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3); /* Using variable-derived color */
     }
 
-    .lang-switch:hover {
-      background: #4F46E5;
-      color: #fff;
+    .back-button:hover {
+      transform: scale(1.1);
+      background: #4338ca; /* Slightly darker primary for hover */
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4); /* Using variable-derived color */
+    }
+
+    .back-button:active {
+      transform: scale(0.95);
     }
 
     .course-hero {
@@ -65,25 +93,34 @@
 
     .vocab-card {
       background: #f1f5f9;
-      border-left: 4px solid #10B981;
+      border-left: 4px solid var(--secondary); /* Using variable */
       padding: 1rem;
       border-radius: 10px;
       margin-bottom: 1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .vocab-card:hover {
+      transform: translateY(-3px);
     }
 
     .footer {
-      background: #1f2937;
+      background: var(--text-dark); /* Using variable */
       color: #fff;
       text-align: center;
       padding: 1rem;
       margin-top: 2rem;
     }
 
+    /* Language specific display */
+    .ar-text { display: inline; }
     .en-text { display: none; }
+    html[lang="en"] .ar-text { display: none; }
+    html[lang="en"] .en-text { display: inline; }
 
     /* Quiz feedback styles */
     .correct-answer {
-      color: #10B981;
+      color: var(--secondary); /* Using variable */
       font-weight: bold;
     }
 
@@ -131,97 +168,295 @@
       margin-bottom: 15px;
       border: 1px solid #fecaca;
     }
+
+    .audio-exercise {
+      background: #eef2ff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    .audio-player {
+      width: 100%;
+      margin: 1rem 0;
+    }
+
+    .progress-container {
+      background: #e5e7eb;
+      border-radius: 10px;
+      height: 10px;
+      margin: 1.5rem 0;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary), #7C3AED); /* Using variable */
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .module-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .mic-btn {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--primary); /* Using variable */
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1rem auto;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .mic-btn:hover {
+      transform: scale(1.05);
+      background: #4338CA;
+    }
+
+    .mic-btn.recording {
+      background: #EF4444;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5); }
+      70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    }
+
+    .feedback-message {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .feedback-success {
+      background: #D1FAE5;
+      color: #065F46;
+    }
+
+    .feedback-error {
+      background: #FEE2E2;
+      color: #B91C1C;
+    }
+
+    .situation-img {
+      width: 100%;
+      border-radius: 12px;
+      margin: 1rem 0;
+      height: 200px;
+      object-fit: cover;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .quiz-section {
+      margin-top: 2rem;
+      border-top: 1px dashed #D1D5DB;
+      padding-top: 1.5rem;
+    }
   </style>
 </head>
 <body>
 
 <div class="header-gradient"></div>
 
-<nav class="navbar navbar-light sticky-top">
-  <div class="container">
-    <a class="navbar-brand" href="#"><i class="bi bi-mortarboard"></i> <span class="ar-text">منصة المبتعث الذكي</span><span class="en-text">Smart Scholar</span></a>
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container d-flex justify-content-between align-items-center">
+    <button class="back-button" onclick="goBack()" title="العودة للخلف / Go Back">
+        <i class="bi bi-arrow-right" id="backIcon"></i>
+    </button>
+
+    <a class="navbar-brand" href="#">
+        <span class="ar-text">منصة المبتعث الذكي</span>
+        <span class="en-text">Smart Scholar Platform</span>
+    </a>
   </div>
 </nav>
 
 <div class="course-hero">
-  <h1 class="ar-text">كورس اللغة التفاعلي</h1>
+  <h1 class="ar-text">كورس اللغة التفاعلي</h1><br>
   <h1 class="en-text">Interactive Language Course</h1>
-  <p class="ar-text">تعلم المفردات والاختبارات التفاعلية</p>
-  <p class="en-text">Learn with vocabulary and interactive quizzes</p>
+  <p class="ar-text">تعلم المفردات والاختبارات التفاعلية لمواقف الحياة اليومية</p><br>
+  <p class="en-text">Learn vocabulary and interactive quizzes for daily life situations</p>
 </div>
 
 <div class="container mt-4">
-  <div class="section-card">
-    <h4 class="ar-text"><i class="bi bi-book"></i> مفردات أساسية</h4>
-    <h4 class="en-text"><i class="bi bi-book"></i> Basic Vocabulary</h4>
 
-    <div class="vocab-card">
-      <p class="ar-text"><strong>التسجيل:</strong> عملية تسجيل المقررات</p>
-      <p class="en-text"><strong>Registration:</strong> Registering for courses</p>
-    </div>
 
-    <div class="vocab-question mt-3">
-      <p class="ar-text"><strong>ما معنى كلمة "Lecture"؟</strong></p>
-      <p class="en-text"><strong>What does "Lecture" mean?</strong></p>
-      <form>
-        <div><label><input type="radio" name="q1" value="correct"> <span class="ar-text">محاضرة</span> <span class="en-text">Lecture</span></label></div>
-        <div><label><input type="radio" name="q1" value="wrong"> <span class="ar-text">امتحان</span> <span class="en-text">Exam</span></label></div>
-        <div><label><input type="radio" name="q1" value="wrong"> <span class="ar-text">وظيفة</span> <span class="en-text">Job</span></label></div>
-        <div><label><input type="radio" name="q1" value="wrong"> <span class="ar-text">مكتبة</span> <span class="en-text">Library</span></label></div>
-      </form>
-    </div>
+  <div class="module-content active" id="main-module">
+    <div class="section-card">
+      <div class="module-header">
+        <h4 class="ar-text"><i class="bi bi-building"></i> تعلم اللغة</h4>
+        <h4 class="en-text"><i class="bi bi-building"></i> Language Learning</h4>
+        <span class="badge bg-success ar-text">مكتمل <span id="main-progress">0</span>/3</span>
+        <span class="badge bg-success en-text">Complete <span id="main-progress">0</span>/3</span>
+      </div>
 
-    <div class="vocab-question mt-3">
-      <p class="ar-text"><strong>ما معنى كلمة "Assignment"؟</strong></p>
-      <p class="en-text"><strong>What does "Assignment" mean?</strong></p>
-      <form>
-        <div><label><input type="radio" name="q2" value="correct"> <span class="ar-text">واجب</span> <span class="en-text">Homework</span></label></div>
-        <div><label><input type="radio" name="q2" value="wrong"> <span class="ar-text">مكتبة</span> <span class="en-text">Library</span></label></div>
-        <div><label><input type="radio" name="q2" value="wrong"> <span class="ar-text">معمل</span> <span class="en-text">Lab</span></label></div>
-        <div><label><input type="radio" name="q2" value="wrong"> <span class="ar-text">قاعة</span> <span class="en-text">Hall</span></label></div>
-      </form>
-    </div>
+      <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000" alt="Learning" class="situation-img">
 
-    <div class="vocab-question mt-3">
-      <p class="ar-text"><strong>ما معنى كلمة "Semester"؟</strong></p>
-      <p class="en-text"><strong>What does "Semester" mean?</strong></p>
-      <form>
-        <div><label><input type="radio" name="q3" value="correct"> <span class="ar-text">فصل دراسي</span> <span class="en-text">Academic term</span></label></div>
-        <div><label><input type="radio" name="q3" value="wrong"> <span class="ar-text">شهادة</span> <span class="en-text">Certificate</span></label></div>
-        <div><label><input type="radio" name="q3" value="wrong"> <span class="ar-text">إدارة</span> <span class="en-text">Administration</span></label></div>
-        <div><label><input type="radio" name="q3" value="wrong"> <span class="ar-text">درجة</span> <span class="en-text">Grade</span></label></div>
-      </form>
-    </div>
+      <div class="ar-text">
+        <h5>مفردات أساسية</h5>
+        <p>هذه المفردات ستساعدك في بداية رحلتك التعليمية.</p>
+      </div>
+      <div class="en-text">
+        <h5>Essential Vocabulary</h5>
+        <p>These terms will help you start your learning journey.</p>
+      </div>
 
-    <div class="mt-4">
-      <button onclick="checkAnswers()" class="btn btn-primary"><span class="ar-text">تحقق</span>  <span class="en-text">Check</span></button>
-      <button onclick="resetQuiz()" class="btn btn-secondary ms-2"><span class="ar-text">إعادة تعيين</span>   <span class="en-text">Reset</span></button>
-      <div id="result" style="margin-top: 15px;"></div>
+      <div class="vocab-card">
+        <p class="ar-text"><strong>التسجيل:</strong> عملية تسجيل المقررات للفصل الدراسي</p>
+        <p class="en-text"><strong>Registration:</strong> The process of enrolling in courses for the semester</p>
+      </div>
+
+      <div class="vocab-card">
+        <p class="ar-text"><strong>المحاضرة:</strong> جلسة تعليمية يقدمها الأستاذ للطلاب</p>
+        <p class="en-text"><strong>Lecture:</b> An educational session delivered by a professor to students</p>
+      </div>
+
+      <div class="vocab-card">
+        <p class="ar-text"><strong>المنحة الدراسية:</strong> دعم مالي للطلاب المتفوقين</p>
+        <p class="en-text"><strong>Scholarship:</strong> Financial aid for outstanding students</p>
+      </div>
+
+      <div class="audio-exercise">
+        <h5 class="ar-text"><i class="bi bi-mic"></i> تمرين النطق</h5>
+        <h5 class="en-text"><i class="bi bi-mic"></i> Pronunciation Exercise</h5>
+
+        <p class="ar-text">استمع إلى الجملة ثم كررها باستخدام الزر أدناه:</p>
+        <p class="en-text">Listen to the sentence then repeat it using the button below:</p>
+
+        <div class="ar-text">
+          <p><strong>"أين توجد مكتبة الجامعة؟"</strong></p>
+          <p><em>(Where is the university library?)</em></p>
+        </div>
+        <div class="en-text">
+          <p><strong>"Where is the university library?"</strong></p>
+        </div>
+
+        <audio controls class="audio-player">
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="mic-btn" onclick="toggleRecording(this)">
+          <i class="bi bi-mic"></i>
+        </div>
+
+        <div class="feedback-message" id="audio-feedback">
+          <p class="ar-text">جيد! لقد سجلت الجملة بنجاح.</p>
+          <p class="en-text">Good! You've successfully recorded the sentence.</p>
+        </div>
+
+        <button class="btn btn-primary mt-2 ar-text" onclick="checkAudio()">تحقق من النطق</button>
+        <button class="btn btn-primary mt-2 en-text" onclick="checkAudio()">Check Pronunciation</button>
+      </div>
+
+      <div class="quiz-section">
+        <h5 class="ar-text"><i class="bi bi-patch-question"></i> اختبر معلوماتك</h5>
+        <h5 class="en-text"><i class="bi bi-patch-question"></i> Test Your Knowledge</h5>
+
+        <div class="vocab-question mt-3">
+          <p class="ar-text"><strong>ما معنى كلمة "Lecture"؟</strong></p>
+          <p class="en-text"><strong>What does "Lecture" mean?</strong></p>
+          <form>
+            <div><label><input type="radio" name="q1" value="correct"> <span class="ar-text">محاضرة</span> <span class="en-text">Lecture</span></label></div>
+            <div><label><input type="radio" name="q1" value="wrong"> <span class="ar-text">امتحان</span> <span class="en-text">Exam</span></label></div>
+            <div><label><input type="radio" name="q1" value="wrong"> <span class="ar-text">وظيفة</span> <span class="en-text">Job</span></label></div>
+            <div><label><input type="radio" name="q1" value="wrong"> <span class="ar-text">مكتبة</span> <span class="en-text">Library</span></label></div>
+          </form>
+        </div>
+
+        <div class="vocab-question mt-3">
+          <p class="ar-text"><strong>ما معنى كلمة "Assignment"؟</strong></p>
+          <p class="en-text"><strong>What does "Assignment" mean?</strong></p>
+          <form>
+            <div><label><input type="radio" name="q2" value="correct"> <span class="ar-text">واجب</span> <span class="en-text">Homework</span></label></div>
+            <div><label><input type="radio" name="q2" value="wrong"> <span class="ar-text">مكتبة</span> <span class="en-text">Library</span></label></div>
+            <div><label><input type="radio" name="q2" value="wrong"> <span class="ar-text">معمل</span> <span class="en-text">Lab</span></label></div>
+            <div><label><input type="radio" name="q2" value="wrong"> <span class="ar-text">قاعة</span> <span class="en-text">Hall</span></label></div>
+          </form>
+        </div>
+
+        <div class="vocab-question mt-3">
+          <p class="ar-text"><strong>ما معنى كلمة "Semester"؟</strong></p>
+          <p class="en-text"><strong>What does "Semester" mean?</strong></p>
+          <form>
+            <div><label><input type="radio" name="q3" value="correct"> <span class="ar-text">فصل دراسي</span> <span class="en-text">Academic term</span></label></div>
+            <div><label><input type="radio" name="q3" value="wrong"> <span class="ar-text">شهادة</span> <span class="en-text">Certificate</span></label></div>
+            <div><label><input type="radio" name="q3" value="wrong"> <span class="ar-text">إدارة</span> <span class="en-text">Administration</span></label></div>
+            <div><label><input type="radio" name="q3" value="wrong"> <span class="ar-text">درجة</span> <span class="en-text">Grade</span></label></div>
+          </form>
+        </div>
+
+        <div class="mt-4">
+          <button onclick="checkAnswers()" class="btn btn-primary"><span class="ar-text">تحقق</span>  <span class="en-text">Check</span></button>
+          <button onclick="resetQuiz()" class="btn btn-secondary ms-2"><span class="ar-text">إعادة تعيين</span>   <span class="en-text">Reset</span></button>
+          <div id="result" style="margin-top: 15px;"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="footer">
-  <p class="ar-text">© جميع الحقوق محفوظة</p>
-  <p class="en-text">© All rights reserved</p>
+  <p class="ar-text">© جميع الحقوق محفوظة - منصة المبتعث الذكي</p>
+  <p class="en-text">© All rights reserved - Smart Scholar</p>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  function toggleLanguage() {
-    document.querySelectorAll('.ar-text, .en-text').forEach(el => {
-      if (el.style.display === 'none') {
-        el.style.display = 'inline';
-      } else {
-        el.style.display = 'none';
-      }
-    });
+  let currentLang = localStorage.getItem('preferredLang') || 'ar'; // Initialize with stored preference or Arabic
 
-    document.documentElement.lang = document.documentElement.lang === 'ar' ? 'en' : 'ar';
-    document.body.dir = document.body.dir === 'rtl' ? 'ltr' : 'rtl';
+  // Function to apply language settings and update back button icon
+  function applyLanguage(lang) {
+    const htmlTag = document.querySelector('html');
+    htmlTag.setAttribute('lang', lang);
+    htmlTag.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr'); // Set dir on html tag
+
+    const backIcon = document.getElementById('backIcon');
+    if (lang === 'ar') {
+      backIcon.classList.remove('bi-arrow-left');
+      backIcon.classList.add('bi-arrow-right');
+      document.title = 'كورس اللغة التفاعلي'; // Update title for Arabic
+    } else {
+      backIcon.classList.remove('bi-arrow-right');
+      backIcon.classList.add('bi-arrow-left');
+      document.title = 'Interactive Language Course'; // Update title for English
+    }
+    localStorage.setItem('preferredLang', lang); // Save preference
   }
 
+  // Go back function
+  function goBack() {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      // Fallback if no history (e.g., direct access). Adjust to your main page.
+      window.location.href = 'index.html';
+    }
+  }
+
+  // Quiz functions (existing, unchanged)
   function checkAnswers() {
-    const questions = ['q1', 'q2', 'q3'];
+    const questions = ['q1', 'q2', 'q3']; // All three questions
     const resultDiv = document.getElementById('result');
     const currentLang = document.documentElement.lang;
 
@@ -236,9 +471,9 @@
 
     if (!allAnswered) {
       if (currentLang === 'ar') {
-        resultDiv.innerHTML = '<div class="alert-danger"><i class="bi bi-exclamation-circle"></i> الرجاء الإجابة على جميع الأسئلة</div>';
+        resultDiv.innerHTML = '<div class="alert-danger"><i class="bi bi-exclamation-circle"></i> الرجاء الإجابة على جميع الأسئلة.</div>';
       } else {
-        resultDiv.innerHTML = '<div class="alert-danger"><i class="bi bi-exclamation-circle"></i> Please answer all questions</div>';
+        resultDiv.innerHTML = '<div class="alert-danger"><i class="bi bi-exclamation-circle"></i> Please answer all questions.</div>';
       }
       return;
     }
@@ -309,6 +544,28 @@
     }
 
     resultDiv.innerHTML = resultHTML;
+
+    // Update progress if quiz is completed with a good score
+    if (score >= 2) { // Assuming 2 out of 3 is passing
+      document.getElementById('main-progress').textContent = '3';
+      document.querySelector('#main-module .badge').classList.remove('bg-secondary');
+      document.querySelector('#main-module .badge').classList.add('bg-success');
+      document.querySelector('#main-module .badge .ar-text').textContent = 'مكتمل 3/3';
+      document.querySelector('#main-module .badge .en-text').textContent = 'Complete 3/3';
+
+      // Update overall progress
+      document.getElementById('progress-bar').style.width = '100%';
+      document.getElementById('progress-percent').textContent = '100%';
+    } else {
+      document.getElementById('main-progress').textContent = '2'; // Example if not fully complete
+      document.querySelector('#main-module .badge').classList.remove('bg-success');
+      document.querySelector('#main-module .badge').classList.add('bg-secondary');
+      document.querySelector('#main-module .badge .ar-text').textContent = 'غير مكتمل 2/3';
+      document.querySelector('#main-module .badge .en-text').textContent = 'Incomplete 2/3';
+
+      document.getElementById('progress-bar').style.width = '66%';
+      document.getElementById('progress-percent').textContent = '66%';
+    }
   }
 
   function resetQuiz() {
@@ -322,6 +579,45 @@
 
     document.getElementById('result').innerHTML = '';
   }
+
+  // Audio recording simulation (existing, unchanged)
+  function toggleRecording(button) {
+    button.classList.toggle('recording');
+    const micIcon = button.querySelector('i');
+
+    if (button.classList.contains('recording')) {
+      micIcon.classList.remove('bi-mic');
+      micIcon.classList.add('bi-mic-mute');
+    } else {
+      micIcon.classList.remove('bi-mic-mute');
+      micIcon.classList.add('bi-mic');
+    }
+  }
+
+  function checkAudio() {
+    const feedback = document.getElementById('audio-feedback');
+    feedback.style.display = 'block';
+    feedback.className = 'feedback-message feedback-success';
+
+    let currentProgress = parseInt(document.getElementById('main-progress').textContent.split('/')[0]);
+    if (currentProgress < 1) { // Only update if it hasn't been updated by audio before
+        document.getElementById('main-progress').textContent = '1';
+        document.querySelector('#main-module .badge').classList.remove('bg-secondary');
+        document.querySelector('#main-module .badge').classList.add('bg-success');
+        document.querySelector('#main-module .badge .ar-text').textContent = 'مكتمل 1/3';
+        document.querySelector('#main-module .badge .en-text').textContent = 'Complete 1/3';
+
+        document.getElementById('progress-bar').style.width = '33%';
+        document.getElementById('progress-percent').textContent = '33%';
+    }
+  }
+
+  // Initialize page with preferred language and progress
+  document.addEventListener('DOMContentLoaded', function() {
+    applyLanguage(currentLang); // Apply language on load
+    document.getElementById('progress-bar').style.width = '0%';
+    document.getElementById('progress-percent').textContent = '0%';
+  });
 </script>
 
 </body>
