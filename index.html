@@ -45,7 +45,7 @@
         .navbar-brand {
             color: var(--primary-color) !important;
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.3rem; /* Slightly smaller title for larger screens */
             display: flex;
             align-items: center;
             gap: 10px;
@@ -56,7 +56,7 @@
             border-radius: 50%;
             width: 40px;
             height: 40px;
-            display: flex;
+            display: none; /* Hidden logo */
             align-items: center;
             justify-content: center;
             color: white;
@@ -155,7 +155,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-         }
+        }
 
         .section-card h3 {
             font-size: 1.4rem;
@@ -236,6 +236,21 @@
             }
         }
 
+        /* New media query for very small screens */
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.1rem; /* Even smaller title for very small screens */
+            }
+            .navbar-brand .brand-text {
+                font-size: 1.1rem; /* Ensure specific span also scales */
+            }
+            .lang-switch {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+                gap: 5px;
+            }
+        }
+
         .animated-bg {
             position: fixed;
             top: 0;
@@ -270,13 +285,12 @@
                 <div class="brand-icon">
                     <i class="bi bi-mortarboard"></i>
                 </div>
-                <span class="ar-text">منصة المبتعث الذكي</span>
-                <span class="en-text" style="display: none;">Smart Scholar Platform</span>
+                <span class="ar-text brand-text">منصة المبتعث الذكي</span>
+                <span class="en-text brand-text" style="display: none;">Smart Scholar Platform</span>
             </a>
 
             <button class="lang-switch" onclick="toggleLanguage()">
-                <i class="bi bi-translate"></i>
-                <span class="ar-text">English</span>
+                <i class="bi bi-globe"></i> <span class="ar-text">English</span>
                 <span class="en-text" style="display: none;">العربية</span>
             </button>
         </div>
@@ -292,6 +306,7 @@
 
         <div class="row g-4">
             <div class="col-md-6 col-lg-4">
+                <a href="departure_guide.html" style="text-decoration: none;">
                 <div class="section-card card-1">
                     <div class="icon"><i class="bi bi-airplane"></i></div>
                     <h3 class="ar-text">دليل ما قبل السفر</h3>
@@ -299,18 +314,19 @@
                     <p class="ar-text mt-2">استعدادات السفر، التأشيرات، والتخطيط المالي</p>
                     <p class="en-text mt-2" style="display: none;">Travel preparations, visas, and financial planning</p>
                 </div>
+                 </a>
             </div>
 
             <div class="col-md-6 col-lg-4">
-                                <a href="accommodation.html" style="text-decoration: none;">
-                <div class="section-card card-2">
-                    <div class="icon"><i class="bi bi-house-door"></i></div>
-                    <h3 class="ar-text">السكن والمعيشة</h3>
-                    <p class="en-text" style="display: none;">Accommodation & Living</p>
-                    <p class="ar-text mt-2">دليل السكن، تكاليف المعيشة، والمواصلات</p>
-                    <p class="en-text mt-2" style="display: none;">Housing guide, living costs, and transportation</p>
-                </div>
-                      </a>
+                <a href="accommodation.html" style="text-decoration: none;">
+                    <div class="section-card card-2">
+                        <div class="icon"><i class="bi bi-house-door"></i></div>
+                        <h3 class="ar-text">السكن والمعيشة</h3>
+                        <p class="en-text" style="display: none;">Accommodation & Living</p>
+                        <p class="ar-text mt-2">دليل السكن، تكاليف المعيشة، والمواصلات</p>
+                        <p class="en-text mt-2" style="display: none;">Housing guide, living costs, and transportation</p>
+                    </div>
+                </a>
             </div>
 
             <div class="col-md-6 col-lg-4">
@@ -328,16 +344,17 @@
             <div class="col-md-6 col-lg-4">
                 <a href="Interactive_quizz.html" style="text-decoration: none;">
                     <div class="section-card card-4">
-                    <div class="icon"><i class="bi bi-chat-square-text"></i></div>
-                    <h3 class="ar-text">كورس لغة تفاعلي</h3>
-                    <p class="en-text" style="display: none;">Interactive Language Course</p>
-                    <p class="ar-text mt-2">تعلم اللغة مع محادثات تفاعلية وتقييم فوري</p>
-                    <p class="en-text mt-2" style="display: none;">Learn languages with interactive conversations and instant feedback</p>
-                </div>
+                        <div class="icon"><i class="bi bi-chat-square-text"></i></div>
+                        <h3 class="ar-text">كورس لغة تفاعلي</h3>
+                        <p class="en-text" style="display: none;">Interactive Language Course</p>
+                        <p class="ar-text mt-2">تعلم اللغة مع محادثات تفاعلية وتقييم فوري</p>
+                        <p class="en-text mt-2" style="display: none;">Learn languages with interactive conversations and instant feedback</p>
+                    </div>
                 </a>
             </div>
 
             <div class="col-md-6 col-lg-4">
+                <a href="study_plan.html" style="text-decoration: none;">
                 <div class="section-card card-5">
                     <div class="icon"><i class="bi bi-calendar2-check"></i></div>
                     <h3 class="ar-text">مخطط دراسي وتنبيهات</h3>
@@ -345,9 +362,11 @@
                     <p class="ar-text mt-2">تنظيم جدولك الدراسي وتذكير بالمواعيد المهمة</p>
                     <p class="en-text mt-2" style="display: none;">Organize your study schedule and get reminders for important deadlines</p>
                 </div>
+                </a>
             </div>
 
             <div class="col-md-6 col-lg-4">
+                 <a href="emergency.html" style="text-decoration: none;">
                 <div class="section-card card-6">
                     <div class="icon"><i class="bi bi-life-preserver"></i></div>
                     <h3 class="ar-text">الطوارئ والدعم</h3>
@@ -355,9 +374,11 @@
                     <p class="ar-text mt-2">خدمات الطوارئ، الدعم النفسي، والاستشارات القانونية</p>
                     <p class="en-text mt-2" style="display: none;">Emergency services, psychological support, and legal consultations</p>
                 </div>
+                </a>
             </div>
 
             <div class="col-md-6 col-lg-4 mx-auto">
+                  <a href="community.html" style="text-decoration: none;">
                 <div class="section-card card-7">
                     <div class="icon"><i class="bi bi-people"></i></div>
                     <h3 class="ar-text">مجتمع المبتعثين</h3>
@@ -365,6 +386,7 @@
                     <p class="ar-text mt-2">تواصل مع مبتعثين آخرين وشارك تجاربك</p>
                     <p class="en-text mt-2" style="display: none;">Connect with other scholars and share your experiences</p>
                 </div>
+                </a>
             </div>
         </div>
     </div>
@@ -392,68 +414,51 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        function applyLanguage(lang) {
+            const htmlTag = document.querySelector('html');
+            const arElements = document.querySelectorAll('.ar-text');
+            const enElements = document.querySelectorAll('.en-text');
+            const langSwitchButton = document.querySelector('.lang-switch');
 
-function applyLanguage(lang) {
-    const htmlTag = document.querySelector('html');
-    const arElements = document.querySelectorAll('.ar-text');
-    const enElements = document.querySelectorAll('.en-text');
-    const langSwitchButton = document.querySelector('.lang-switch');
-
-    if (lang === 'en') {
-        htmlTag.setAttribute('lang', 'en');
-        htmlTag.setAttribute('dir', 'ltr');
-        arElements.forEach(el => el.style.display = 'none');
-        enElements.forEach(el => {
-
-            if (['P', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'UL', 'OL', 'LI'].includes(el.tagName)) {
-                el.style.display = 'block';
+            if (lang === 'en') {
+                htmlTag.setAttribute('lang', 'en');
+                htmlTag.setAttribute('dir', 'ltr');
+                arElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => {
+                    if (['P', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'UL', 'OL', 'LI'].includes(el.tagName)) {
+                        el.style.display = 'block';
+                    } else {
+                        el.style.display = 'inline';
+                    }
+                });
+                if (langSwitchButton) {
+                    langSwitchButton.querySelector('.ar-text').style.display = 'none';
+                    langSwitchButton.querySelector('.en-text').style.display = 'inline';
+                    langSwitchButton.querySelector('.en-text').textContent = 'AR'; // Changed text to AR
+                }
             } else {
-                el.style.display = 'inline';
+                htmlTag.setAttribute('lang', 'ar');
+                htmlTag.setAttribute('dir', 'rtl');
+                arElements.forEach(el => {
+                    if (['P', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'UL', 'OL', 'LI'].includes(el.tagName)) {
+                        el.style.display = 'block';
+                    } else {
+                        el.style.display = 'inline';
+                    }
+                });
+                enElements.forEach(el => el.style.display = 'none');
+                if (langSwitchButton) {
+                    langSwitchButton.querySelector('.ar-text').style.display = 'inline';
+                    langSwitchButton.querySelector('.ar-text').textContent = 'EN'; // Changed text to EN
+                    langSwitchButton.querySelector('.en-text').style.display = 'none';
+                }
             }
-        });
-        if (langSwitchButton) {
-            langSwitchButton.querySelector('.ar-text').style.display = 'none';
-            langSwitchButton.querySelector('.en-text').style.display = 'inline';
+
+            document.body.style.fontFamily = htmlTag.getAttribute('lang') === 'ar' ?
+                "'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" :
+                "'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
         }
-    } else {
-        htmlTag.setAttribute('lang', 'ar');
-        htmlTag.setAttribute('dir', 'rtl');
-        arElements.forEach(el => {
-            if (['P', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'UL', 'OL', 'LI'].includes(el.tagName)) {
-                el.style.display = 'block';
-            } else {
-                el.style.display = 'inline';
-            }
-        });
-        enElements.forEach(el => el.style.display = 'none');
-        if (langSwitchButton) {
-            langSwitchButton.querySelector('.ar-text').style.display = 'inline';
-            langSwitchButton.querySelector('.en-text').style.display = 'none';
-        }
-    }
 
-    document.body.style.fontFamily = htmlTag.getAttribute('lang') === 'ar' ?
-        "'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" :
-        "'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
-}
-
-function toggleLanguage() {
-    const htmlTag = document.querySelector('html');
-    let currentLang = htmlTag.getAttribute('lang');
-    let newLang = (currentLang === 'ar') ? 'en' : 'ar';
-
-    localStorage.setItem('preferredLang', newLang);
-    applyLanguage(newLang);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('preferredLang');
-    if (savedLang) {
-        applyLanguage(savedLang);
-    } else {
-        applyLanguage('ar');
-    }
-});
         function toggleLanguage() {
             const htmlTag = document.querySelector('html');
             let currentLang = htmlTag.getAttribute('lang');
