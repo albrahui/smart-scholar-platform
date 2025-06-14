@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الطوارئ والدعم | منصة المبتعث الذكي</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --secondary: #10B981;
+            --accent: #F59E0B;
+            --bg-light: #F9FAFB;
+            --text-dark: #1F2937;
+            --emergency: #EF4444; /* Red for emergency */
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            direction: rtl;
+        }
+
+        [lang="en"] body {
+            direction: ltr;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            padding: 0.75rem 0;
+        }
+
+        .navbar-brand {
+            color: var(--primary) !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-icon {
+            background: linear-gradient(135deg, var(--primary), #7C3AED);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .back-button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            background: #4338ca;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+        }
+
+        .back-button:active {
+            transform: scale(0.95);
+        }
+
+        .lang-toggle {
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .lang-toggle:hover {
+            background: #d97706;
+            transform: translateY(-1px);
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(245, 158, 11, 0.05)); /* Emergency themed gradient */
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .welcome-section h1 {
+            font-weight: 700;
+            color: var(--emergency);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .welcome-section h1:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--emergency); /* Red accent for emergency */
+            border-radius: 2px;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+        }
+
+        .content-section ul {
+            padding-right: 20px; /* Adjust for RTL bullet points */
+        }
+
+        [lang="en"] .content-section ul {
+            padding-left: 20px; /* Adjust for LTR bullet points */
+            padding-right: 0;
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .en-text { display: none; }
+        [lang="en"] .ar-text { display: none; }
+        [lang="en"] .en-text { display: block; }
+
+        .feature-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--emergency); /* Red for emergency */
+            flex-shrink: 0;
+        }
+
+        .feature-content h4 {
+            font-weight: 700;
+            color: var(--emergency); /* Red for emergency */
+            margin-bottom: 0.5rem;
+        }
+
+        .emergency-button-container {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .emergency-button {
+            background: var(--emergency);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 1.5rem 3rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none; /* Make it a link, if desired, or keep as button */
+        }
+
+        .emergency-button:hover {
+            background: #dc2626;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.6);
+        }
+
+        .emergency-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .navbar-brand {
+                font-size: 1.3rem;
+            }
+            .welcome-section h1 {
+                font-size: 2rem;
+            }
+            .emergency-button {
+                font-size: 1.5rem;
+                padding: 1.2rem 2.5rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .navbar .container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .navbar-brand {
+                font-size: 1.2rem;
+                order: 2;
+            }
+            .back-button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+                order: 1;
+            }
+            .welcome-section {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+            .welcome-section h1 {
+                font-size: 1.75rem;
+            }
+            .welcome-section p.lead {
+                font-size: 1rem;
+            }
+            .content-section {
+                padding: 1.5rem;
+            }
+            .content-section h2 {
+                font-size: 1.75rem;
+            }
+            .feature-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .feature-icon {
+                margin-bottom: 0.5rem;
+            }
+            .emergency-button {
+                font-size: 1.3rem;
+                padding: 1rem 2rem;
+                width: 90%; /* Make it wider on small screens */
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .navbar-brand {
+                font-size: 1rem;
+                text-align: center;
+                flex-basis: 100%;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            .navbar .container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .back-button, .lang-toggle {
+                flex-grow: 0;
+            }
+            .welcome-section h1 {
+                font-size: 1.5rem;
+            }
+            .welcome-section p.lead {
+                font-size: 0.9rem;
+            }
+            .content-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <button class="back-button" onclick="goBack()" title="العودة للخلف / Go Back">
+                <i class="bi bi-arrow-right" id="backIcon"></i>
+            </button>
+
+            <a class="navbar-brand" href="#">
+                <span class="ar-text">منصة المبتعث الذكي</span>
+                <span class="en-text">Smart Scholar Platform</span>
+            </a>
+
+            </div>
+    </nav>
+
+    <div class="container">
+        <div class="welcome-section">
+            <h1 class="ar-text">🚨 الطوارئ والدعم</h1>
+            <h1 class="en-text">🚨 Emergency & Support</h1>
+            <p class="lead ar-text">دليلك السريع للمساعدة في الأوقات الحرجة</p>
+            <p class="lead en-text">Your quick guide to assistance in critical times</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="ar-text mb-4">خدمات الطوارئ والدعم</h2>
+            <h2 class="en-text mb-4">Emergency & Support Services</h2>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-telephone-fill"></i></div>
+                        <div class="feature-content">
+                            <h4 class="ar-text">أرقام السفارات والملحقيات</h4>
+                            <h4 class="en-text">Embassy & Cultural Attaché Numbers</h4>
+                            <p class="ar-text">قائمة بأرقام التواصل الهامة للسفارات والملحقيات السعودية في بلد الابتعاث.</p>
+                            <p class="en-text">A list of important contact numbers for Saudi embassies and cultural attachés in your country of study.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-lightbulb"></i></div>
+                        <div class="feature-content">
+                            <h4 class="ar-text">جهات دعم نفسي/قانوني</h4>
+                            <h4 class="en-text">Psychological/Legal Support Entities</h4>
+                            <p class="ar-text">معلومات عن الهيئات والمنظمات التي تقدم دعمًا نفسيًا أو استشارات قانونية للطلاب.</p>
+                            <p class="en-text">Information about organizations offering psychological support or legal advice to students.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-hospital"></i></div>
+                        <div class="feature-content">
+                            <h4 class="ar-text">مراكز المساعدة الطبية</h4>
+                            <h4 class="en-text">Medical Assistance Centers</h4>
+                            <p class="ar-text">بيانات التواصل مع المستشفيات والعيادات الطارئة القريبة.</p>
+                            <p class="en-text">Contact details for nearby hospitals and emergency clinics.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
+                        <div class="feature-content">
+                            <h4 class="ar-text">نصائح وإرشادات السلامة</h4>
+                            <h4 class="en-text">Safety Tips & Guidelines</h4>
+                            <p class="ar-text">إرشادات عامة للحفاظ على سلامتك الشخصية في بلد الابتعاث.</p>
+                            <p class="en-text">General guidelines for maintaining your personal safety in the host country.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="emergency-button-container">
+                <a href="tel:911" class="emergency-button">
+                    <span class="ar-text">مساعدة عاجلة <i class="bi bi-telephone-outbound-fill"></i></span>
+                    <span class="en-text">Urgent Help <i class="bi bi-telephone-outbound-fill"></i></span>
+                </a>
+                <p class="ar-text text-danger mt-3">**تنبيه: سيتم الاتصال برقم الطوارئ المحلي (911 أو ما يعادله) عند الضغط على الزر.**</p>
+                <p class="en-text text-danger mt-3">**Warning: Pressing this button will dial the local emergency number (911 or equivalent).**</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="ar-text">© 2025 منصة المبتعث الذكي. جميع الحقوق محفوظة.</p>
+            <p class="en-text">© 2025 Smart Scholar Platform. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentLang = localStorage.getItem('preferredLang') || 'ar';
+
+        function applyLanguage(lang) {
+            const html = document.documentElement;
+            const backIcon = document.getElementById('backIcon');
+            html.setAttribute('lang', lang);
+            html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            if (lang === 'ar') {
+                backIcon.className = 'bi bi-arrow-right';
+                document.title = 'الطوارئ والدعم | منصة المبتعث الذكي';
+            } else {
+                backIcon.className = 'bi bi-arrow-left';
+                document.title = 'Emergency & Support | Smart Scholar Platform';
+            }
+
+            // If you uncomment the language toggle button in HTML, you'll need this part
+            const langToggleBtn = document.querySelector('.lang-toggle');
+            if (langToggleBtn) {
+                if (lang === 'ar') {
+                    langToggleBtn.querySelector('.ar-text').style.display = 'inline';
+                    langToggleBtn.querySelector('.en-text').style.display = 'none';
+                } else {
+                    langToggleBtn.querySelector('.ar-text').style.display = 'none';
+                    langToggleBtn.querySelector('.en-text').style.display = 'inline';
+                }
+            }
+            currentLang = lang;
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        function toggleLanguage() {
+            applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+        }
+
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                // Fallback if no history (e.g., direct access)
+                window.location.href = 'index.html'; // Adjust to your main page
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(currentLang);
+        });
+    </script>
+</body>
+</html>

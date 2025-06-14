@@ -229,19 +229,19 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container d-flex justify-content-between align-items-center">
-            <a href="#" class="back-button" onclick="goBack()" title="العودة للخلف / Go Back">
+            <button class="back-button" onclick="goBack()" title="العودة للخلف / Go Back">
                 <i class="bi bi-arrow-right" id="backIcon"></i>
-            </a>
+            </button>
 
             <a class="navbar-brand" href="#">
-                <div class="brand-icon">
-                    <i class="bi bi-mortarboard"></i>
-                </div>
+
                 <span class="ar-text">منصة المبتعث الذكي</span>
                 <span class="en-text">Smart Scholar Platform</span>
             </a>
+
+
         </div>
     </nav>
 
@@ -341,62 +341,48 @@
             <p class="ar-text">للبحث عن السكن المناسب، يمكنك الاستعانة بالمواقع التالية:</p>
             <p class="en-text">To find suitable accommodation, you can use the following websites:</p>
 
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex align-items-center ar-text">
-                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
-                    <a href="https://www.unilodgers.com/" target="_blank" class="text-decoration-none fw-bold text-dark">Unilodgers</a>
-                    <span class="ms-auto text-muted">(لسكن الطلاب حول العالم)</span>
-                </li>
-                <li class="list-group-item d-flex align-items-center en-text">
-                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
-                    <a href="https://www.unilodgers.com/" target="_blank" class="text-decoration-none fw-bold text-dark">Unilodgers</a>
-                    <span class="ms-auto text-muted">(For student accommodation worldwide)</span>
-                </li>
+<ul class="list-group list-group-flush" style="margin: 0; padding: 0;">
+    <li class="list-group-item d-flex align-items-center" style="margin: 0; padding: 0;">
+        <i class="bi bi-link-45deg fs-4 text-primary me-2"></i>
+        <a href="https://www.unilodgers.com/" target="_blank" class="text-decoration-none fw-bold text-dark">
+            <span class="ar-text">Unilodgers (لسكن الطلاب حول العالم)</span>
+            <span class="en-text" style="display: none;">Unilodgers (For student accommodation worldwide)</span>
+        </a>
+    </li>
 
-                <li class="list-group-item d-flex align-items-center ar-text">
-                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
-                    <a href="https://www.booking.com/" target="_blank" class="text-decoration-none fw-bold text-dark">Booking.com</a>
-                    <span class="ms-auto text-muted">(خيارات متنوعة للفنادق والشقق)</span>
-                </li>
-                <li class="list-group-item d-flex align-items-center en-text">
-                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
-                    <a href="https://www.booking.com/" target="_blank" class="text-decoration-none fw-bold text-dark">Booking.com</a>
-                    <span class="ms-auto text-muted">(Various options for hotels & apartments)</span>
-                </li>
+    <li class="list-group-item d-flex align-items-center" style="margin: 0; padding: 0;">
+        <i class="bi bi-link-45deg fs-4 text-primary me-2"></i>
+        <a href="https://www.booking.com/" target="_blank" class="text-decoration-none fw-bold text-dark">
+            <span class="ar-text">Booking.com (خيارات متنوعة للفنادق والشقق)</span>
+            <span class="en-text" style="display: none;">Booking.com (Various options for hotels & apartments)</span>
+        </a>
+    </li>
 
-                <li class="list-group-item d-flex align-items-center ar-text">
-                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
-                    <a href="https://www.airbnb.com/" target="_blank" class="text-decoration-none fw-bold text-dark">Airbnb</a>
-                    <span class="ms-auto text-muted">(للإقامات قصيرة وطويلة الأمد مع عائلات أو أفراد)</span>
-                </li>
-                <li class="list-group-item d-flex align-items-center en-text">
-                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
-                    <a href="https://www.airbnb.com/" target="_blank" class="text-decoration-none fw-bold text-dark">Airbnb</a>
-                    <span class="ms-auto text-muted">(For short and long-term stays with families or individuals)</span>
-                </li>
+    <li class="list-group-item d-flex align-items-center" style="margin: 0; padding: 0;">
+        <i class="bi bi-link-45deg fs-4 text-primary me-2"></i>
+        <a href="https://www.airbnb.com/" target="_blank" class="text-decoration-none fw-bold text-dark">
+            <span class="ar-text">Airbnb (للإقامات قصيرة وطويلة الأمد مع عائلات أو أفراد)</span>
+            <span class="en-text" style="display: none;">Airbnb (For short and long-term stays with families or individuals)</span>
+        </a>
+    </li>
 
-                <li class="list-group-item d-flex align-items-center ar-text">
-                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
-                    <a href="https://www.spareroom.co.uk/" target="_blank" class="text-decoration-none fw-bold text-dark">SpareRoom</a>
-                    <span class="ms-auto text-muted">(للبحث عن غرف في سكن مشترك، خاصة في المملكة المتحدة)</span>
-                </li>
-                <li class="list-group-item d-flex align-items-center en-text">
-                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
-                    <a href="https://www.spareroom.co.uk/" target="_blank" class="text-decoration-none fw-bold text-dark">SpareRoom</a>
-                    <span class="ms-auto text-muted">(For finding shared rooms, especially in the UK)</span>
-                </li>
+    <li class="list-group-item d-flex align-items-center" style="margin: 0; padding: 0;">
+        <i class="bi bi-link-45deg fs-4 text-primary me-2"></i>
+        <a href="https://www.spareroom.co.uk/" target="_blank" class="text-decoration-none fw-bold text-dark">
+            <span class="ar-text">SpareRoom (للبحث عن غرف في سكن مشترك، خاصة في المملكة المتحدة)</span>
+            <span class="en-text" style="display: none;">SpareRoom (For finding shared rooms, especially in the UK)</span>
+        </a>
+    </li>
 
-                <li class="list-group-item d-flex align-items-center ar-text">
-                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
-                    <a href="https://www.housinganywhere.com/" target="_blank" class="text-decoration-none fw-bold text-dark">HousingAnywhere</a>
-                    <span class="ms-auto text-muted">(لتبادل السكن للطلاب الدوليين)</span>
-                </li>
-                <li class="list-group-item d-flex align-items-center en-text">
-                    <i class="bi bi-link-45deg me-3 fs-4 text-primary"></i>
-                    <a href="https://www.housinganywhere.com/" target="_blank" class="text-decoration-none fw-bold text-dark">HousingAnywhere</a>
-                    <span class="ms-auto text-muted">(For international student housing exchange)</span>
-                </li>
-            </ul>
+    <li class="list-group-item d-flex align-items-center" style="margin: 0; padding: 0;">
+        <i class="bi bi-link-45deg fs-4 text-primary me-2"></i>
+        <a href="https://www.housinganywhere.com/" target="_blank" class="text-decoration-none fw-bold text-dark">
+            <span class="ar-text">HousingAnywhere (لتبادل السكن للطلاب الدوليين)</span>
+            <span class="en-text" style="display: none;">HousingAnywhere (For international student housing exchange)</span>
+        </a>
+    </li>
+</ul>
+
         </div>
 
         <div id="essential-services" class="content-section my-5">
@@ -445,16 +431,6 @@
         <div class="container">
             <p class="ar-text">© 2025 منصة المبتعث الذكي. جميع الحقوق محفوظة.</p>
             <p class="en-text">© 2025 Smart Scholar Platform. All rights reserved.</p>
-            <p class="mt-2">
-                <a href="#" class="ar-text">الشروط والأحكام</a> |
-                <a href="#" class="ar-text">سياسة الخصوصية</a> |
-                <a href="#" class="ar-text">اتصل بنا</a>
-            </p>
-            <p class="mt-2 en-text">
-                <a href="#">Terms & Conditions</a> |
-                <a href="#">Privacy Policy</a> |
-                <a href="#">Contact Us</a>
-            </p>
         </div>
     </footer>
 

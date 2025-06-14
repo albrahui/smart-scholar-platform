@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-
     :root {
         --primary: #4F46E5;
         --secondary: #10B981;
@@ -190,14 +189,13 @@
     [lang="en"] .ar-text { display: none; }
     [lang="en"] .en-text { display: block; }
 
-    /* Specific styles for the new layout */
     .feature-card {
         background: white;
         border-radius: 12px;
         padding: 1.5rem;
         box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         transition: all 0.3s ease;
-        border-left: 4px solid var(--secondary); /* Accent border for features */
+        border-left: 4px solid var(--secondary);
     }
 
     [lang="en"] .feature-card {
@@ -225,23 +223,20 @@
         flex-shrink: 0;
     }
 
-    /* New styles for the refined layout */
     .section-divider {
         border-top: 2px dashed rgba(79, 70, 229, 0.3);
         margin: 3rem auto;
         width: 80%;
     }
 
-    /* Adjusting topic card alignment for the new layout */
     .topics-grid .col-md-6 {
         display: flex;
         justify-content: center;
     }
 
-    /* Styles for the interactive checklist */
     .packing-item {
         display: flex;
-        align-items: flex-start; /* Align items to the start for better text wrapping */
+        align-items: flex-start;
         background: var(--bg-light);
         padding: 1rem 1.5rem;
         border-radius: 8px;
@@ -257,7 +252,7 @@
     }
 
     .packing-item input[type="checkbox"] {
-        appearance: none; /* Hide default checkbox */
+        appearance: none;
         -webkit-appearance: none;
         width: 24px;
         height: 24px;
@@ -268,16 +263,15 @@
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        margin-right: 15px; /* Spacing for RTL */
+        margin-right: 15px;
         transition: background-color 0.2s ease, border-color 0.2s ease;
-        position: relative; /* For the checkmark */
+        position: relative;
     }
 
     [lang="en"] .packing-item input[type="checkbox"] {
         margin-right: 0;
-        margin-left: 15px; /* Spacing for LTR */
+        margin-left: 15px;
     }
-
 
     .packing-item input[type="checkbox"]:checked {
         background-color: var(--secondary);
@@ -285,12 +279,12 @@
     }
 
     .packing-item input[type="checkbox"]:checked::after {
-        content: '\2713'; /* Checkmark unicode character */
+        content: '\2713';
         color: white;
         font-size: 1.2rem;
         font-weight: bold;
         text-align: center;
-        line-height: 1; /* Adjust vertical alignment */
+        line-height: 1;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -300,7 +294,7 @@
     .packing-item.completed {
         text-decoration: line-through;
         opacity: 0.6;
-        background-color: #e9ecef; /* Lighter background for completed */
+        background-color: #e9ecef;
         border-color: #d1d1d1;
     }
 
@@ -310,12 +304,12 @@
 
     .packing-content h5 {
         margin-bottom: 0.25rem;
-        color: var(--text-dark); /* Ensure text color is readable */
+        color: var(--text-dark);
         transition: color 0.3s ease;
     }
 
     .packing-item.completed .packing-content h5 {
-        color: #6c757d; /* Muted color for completed text */
+        color: #6c757d;
     }
 
     .packing-content p {
@@ -326,7 +320,7 @@
     }
 
     .packing-item.completed .packing-content p {
-        color: #888; /* Muted color for completed text */
+        color: #888;
     }
 
     @media (max-width: 768px) {
@@ -370,13 +364,16 @@
         .packing-item input[type="checkbox"] {
             width: 20px;
             height: 20px;
-            margin-right: 10px; /* Spacing for RTL on small screens */
+            margin-right: 10px;
         }
+
         [lang="en"] .packing-item input[type="checkbox"] {
             margin-right: 0;
-            margin-left: 10px; /* Spacing for LTR on small screens */
+            margin-left: 10px;
         }
     }
+</style>
+
 
 </style>
 
@@ -611,16 +608,6 @@
         <div class="container">
             <p class="ar-text">© 2025 منصة المبتعث الذكي. جميع الحقوق محفوظة.</p>
             <p class="en-text">© 2025 Smart Scholar Platform. All rights reserved.</p>
-            <p class="mt-2">
-                <a href="#" class="ar-text">الشروط والأحكام</a> |
-                <a href="#" class="ar-text">سياسة الخصوصية</a> |
-                <a href="#" class="ar-text">اتصل بنا</a>
-            </p>
-            <p class="mt-2 en-text">
-                <a href="#">Terms & Conditions</a> |
-                <a href="#">Privacy Policy</a> |
-                <a href="#">Contact Us</a>
-            </p>
         </div>
     </footer>
 
