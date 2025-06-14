@@ -14,7 +14,7 @@
             --accent: #F59E0B;
             --bg-light: #F9FAFB;
             --text-dark: #1F2937;
-            --emergency: #EF4444; /* Red for emergency */
+            --emergency: #EF4444;
         }
 
         body {
@@ -121,7 +121,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: var(--emergency); /* Red accent for emergency */
+            background: var(--emergency);
             border-radius: 2px;
         }
 
@@ -134,11 +134,11 @@
         }
 
         .content-section ul {
-            padding-right: 20px; /* Adjust for RTL bullet points */
+            padding-right: 20px;
         }
 
         [lang="en"] .content-section ul {
-            padding-left: 20px; /* Adjust for LTR bullet points */
+            padding-left: 20px;
             padding-right: 0;
         }
 
@@ -179,13 +179,13 @@
 
         .feature-icon {
             font-size: 2rem;
-            color: var(--emergency); /* Red for emergency */
+            color: var(--emergency);
             flex-shrink: 0;
         }
 
         .feature-content h4 {
             font-weight: 700;
-            color: var(--emergency); /* Red for emergency */
+            color: var(--emergency);
             margin-bottom: 0.5rem;
         }
 
@@ -208,7 +208,7 @@
             display: inline-flex;
             align-items: center;
             gap: 15px;
-            text-decoration: none; /* Make it a link, if desired, or keep as button */
+            text-decoration: none;
         }
 
         .emergency-button:hover {
@@ -222,7 +222,7 @@
             box-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
         }
 
-        /* Responsive Adjustments */
+
         @media (max-width: 991.98px) {
             .navbar-brand {
                 font-size: 1.3rem;
@@ -279,7 +279,7 @@
             .emergency-button {
                 font-size: 1.3rem;
                 padding: 1rem 2rem;
-                width: 90%; /* Make it wider on small screens */
+                width: 90%;
             }
         }
 
@@ -422,7 +422,6 @@
                 document.title = 'Emergency & Support | Smart Scholar Platform';
             }
 
-            // If you uncomment the language toggle button in HTML, you'll need this part
             const langToggleBtn = document.querySelector('.lang-toggle');
             if (langToggleBtn) {
                 if (lang === 'ar') {
@@ -445,8 +444,7 @@
             if (window.history.length > 1) {
                 window.history.back();
             } else {
-                // Fallback if no history (e.g., direct access)
-                window.location.href = 'index.html'; // Adjust to your main page
+                window.location.href = 'index.html';
             }
         }
 

@@ -14,7 +14,7 @@
             --accent: #F59E0B;
             --bg-light: #F9FAFB;
             --text-dark: #1F2937;
-            --community: #3B82F6; /* Blue for community/connection */
+            --community: #3B82F6;
         }
 
         body {
@@ -101,14 +101,14 @@
             text-align: center;
             margin: 2rem 0;
             padding: 2rem;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(16, 185, 129, 0.05)); /* Community themed gradient */
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(16, 185, 129, 0.05));
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
         .welcome-section h1 {
             font-weight: 700;
-            color: var(--community); /* Blue for community */
+            color: var(--community);
             margin-bottom: 1rem;
             position: relative;
         }
@@ -121,7 +121,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: var(--community); /* Blue accent for community */
+            background: var(--community);
             border-radius: 2px;
         }
 
@@ -134,11 +134,11 @@
         }
 
         .content-section ul {
-            padding-right: 20px; /* Adjust for RTL bullet points */
+            padding-right: 20px;
         }
 
         [lang="en"] .content-section ul {
-            padding-left: 20px; /* Adjust for LTR bullet points */
+            padding-left: 20px;
             padding-right: 0;
         }
 
@@ -179,17 +179,16 @@
 
         .feature-icon {
             font-size: 2rem;
-            color: var(--community); /* Blue for community */
+            color: var(--community);
             flex-shrink: 0;
         }
 
         .feature-content h4 {
             font-weight: 700;
-            color: var(--community); /* Blue for community */
+            color: var(--community);
             margin-bottom: 0.5rem;
         }
 
-        /* Responsive Adjustments */
         @media (max-width: 991.98px) {
             .navbar-brand {
                 font-size: 1.3rem;
@@ -371,7 +370,6 @@
                 document.title = 'Scholar Community | Smart Scholar Platform';
             }
 
-            // If you uncomment the language toggle button in HTML, you'll need this part
             const langToggleBtn = document.querySelector('.lang-toggle');
             if (langToggleBtn) {
                 if (lang === 'ar') {
@@ -394,8 +392,7 @@
             if (window.history.length > 1) {
                 window.history.back();
             } else {
-                // Fallback if no history (e.g., direct access)
-                window.location.href = 'index.html'; // Adjust to your main page
+                window.location.href = 'index.html';
             }
         }
 

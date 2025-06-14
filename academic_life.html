@@ -42,26 +42,13 @@
             color: var(--primary) !important;
             font-weight: 700;
             font-size: 1.5rem;
-            display: flex; /* Kept for alignment with icon if you add one later */
-            align-items: center; /* Kept for alignment with icon if you add one later */
-            gap: 10px; /* Kept for alignment with icon if you add one later */
-            letter-spacing: -0.5px;
-            white-space: nowrap; /* Prevents text from wrapping on one line */
-        }
-
-        /* If you wanted an icon next to the brand, you'd enable this */
-        /*
-        .brand-icon {
-            background: linear-gradient(135deg, var(--primary), #7C3AED);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
+            gap: 10px;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
         }
-        */
+
 
         .back-button {
             background: var(--primary);
@@ -409,35 +396,32 @@
             transform: translateY(-3px);
         }
 
-        /* Essential language display logic - DO NOT change this for responsive */
         .en-text { display: none; }
         [lang="en"] .ar-text { display: none; }
         [lang="en"] .en-text { display: block; }
 
-        /* --- Custom Navbar Styling for Row Layout and Responsive Branding --- */
         .navbar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            flex-wrap: nowrap; /* Keep items on one line by default */
+            flex-wrap: nowrap;
         }
 
-        @media (max-width: 767.98px) { /* Medium and smaller screens (Bootstrap's 'md' down) */
+        @media (max-width: 767.98px) {
             .navbar-brand {
-                font-size: 1.2rem; /* Make the brand text smaller */
+                font-size: 1.2rem;
             }
         }
 
-        @media (max-width: 575.98px) { /* Smallest screens (Bootstrap's 'sm' down) */
+        @media (max-width: 575.98px) {
             .navbar-brand {
-                font-size: 1rem; /* Even smaller font size for very small screens */
+                font-size: 1rem;
             }
             .navbar .container {
-                /* Allow wrapping on very small screens if the combined width is too much */
                 flex-wrap: wrap;
-                justify-content: center; /* Center items when they wrap */
-                gap: 10px; /* Add a small gap when wrapped */
+                justify-content: center;
+                gap: 10px;
             }
             .back-button {
                 width: 40px;
@@ -445,9 +429,7 @@
                 font-size: 1.1rem;
             }
         }
-        /* --- End Custom Navbar Styling --- */
 
-        /* Existing Responsive Adjustments (kept as is) */
         @media (max-width: 991.98px) {
             .hero-section h1 {
                 font-size: 2rem;
@@ -723,8 +705,6 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             applyLanguage(currentLang);
-
-            // Add animation to topic cards when they come into view
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
